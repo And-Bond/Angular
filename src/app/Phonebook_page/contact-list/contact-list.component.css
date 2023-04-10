@@ -1,0 +1,14 @@
+.button{
+    width: 100px;
+  border: 1px solid gray;
+  border-radius: 15%;
+  height: 35px;
+  margin-left: 10px;
+  color: black;
+  font-weight: 800;
+  background-color: #fff;
+  cursor: pointer;
+}
+.li{
+    margin: 5px 0;
+}

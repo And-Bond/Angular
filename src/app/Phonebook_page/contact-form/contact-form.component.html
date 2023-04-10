@@ -1,0 +1,8 @@
+<ng-content></ng-content>
+<form class="form" (submit)="submit()">
+        <p class="p">Name</p>
+        <input class="input" type="text" name="name" [(ngModel)]="name">
+        <p class="p">Tel</p>
+        <input class="input" type="tel" name="number" [(ngModel)]='number'>
+        <button class="form-button" type="submit">Add contact</button>
+</form>

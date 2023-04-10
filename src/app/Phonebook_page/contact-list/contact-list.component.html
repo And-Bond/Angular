@@ -1,0 +1,7 @@
+<ng-content></ng-content>
+    <ul>
+        <li class="li" *ngFor="let contact of contacts">
+            {{contact.name}}: {{contact.number}}
+            <button class="button" name="{{contact.id}}" type="click" (click)="onDelete($event)">Delete</button>
+        </li>
+    </ul>
