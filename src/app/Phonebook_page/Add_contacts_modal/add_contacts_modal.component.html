@@ -1,0 +1,21 @@
+<div [class.hidden]="hidden" class="add-contact-modal">
+  <div class="all-content-cover">
+    <form>
+      <p>Name</p>
+      <input #name class="input" type="text" />
+      <p>Tel</p>
+      <input #tel class="input" type="text" />
+      <button
+        (click)="
+          onSubmit(name.value, tel.value); name.value = ''; tel.value = ''
+        "
+        type="submit"
+        class="btn"
+      >
+        ADD
+      </button>
+    </form>
+    <button class="close-button" (click)="hidden = true">CLOSE</button>
+    <p class="error">{{errorMsg}}</p>
+  </div>
+</div>

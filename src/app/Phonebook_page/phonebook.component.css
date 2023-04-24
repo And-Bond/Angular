@@ -1,7 +1,9 @@
-.app_comp{
-    display: grid;
-    /* grid-template-rows: 100px;
-    grid-template-columns: 100px; */
+.phonebookComp{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100vh;
 }
 
 .filter-input{
@@ -16,4 +18,15 @@
     width: 100px;
     height: 25px;
     cursor: pointer;
+}
+.phbook-btn{
+    width: 200px;
+    height: 100px;
+    color: white;
+    background-color: #000;
+    cursor: pointer;
+}
+.phbook-btn:hover{
+    color: #000;
+    background-color: #fff;
 }

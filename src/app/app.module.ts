@@ -3,12 +3,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms'
 
 import { AppComponent }   from './app.component';
-// import {ContactListComponent} from './Phonebook/contact-list/contact-list.component'
 import {PhonebookModule} from './Phonebook_page/phonebook.module'
+
+import {NavComponent} from './Nav/nav.component'
 
 @NgModule({
     imports:      [ BrowserModule, FormsModule, PhonebookModule ],
-    declarations: [ AppComponent ],
+    declarations: [ AppComponent,NavComponent ],
     bootstrap:    [ AppComponent ]
 })
 

@@ -1,0 +1,29 @@
+<div [class.hidden]="hidden" class="show-contact-modal">
+  <div class="all-content-cover">
+    <form class="form">
+      <p class="filter-label">Filter contact by</p>
+      <button [class.filter-button--inactive]="!nameActive" [class.filter-button--active]="nameActive" (click)="onFilterBtnClick('name')">N</button>
+      <button [class.filter-button--inactive]="!telActive" [class.filter-button--active]="telActive" (click)="onFilterBtnClick('tel')">T</button>
+      <input #finput class="filter-input" [disabled]="!nameActive && !telActive" (input)="onFilterInput(finput.value)" />
+    </form>
+    <ul *ngIf="finput.value === ''" class="contacts-list">
+      <li class="list-item" *ngFor="let contact of contacts">
+        <div class="text-item">
+          <p class="text">{{contact.name}}</p>
+          <p class="text">{{contact.tel}}</p>
+        </div>
+        <button (click)="onContactDelete(contact.id)" class="delete-button">D</button>
+      </li>
+    </ul>
+    <ul *ngIf="finput.value !== ''" class="contacts-list">
+      <li class="list-item" *ngFor="let contact of filteredContacts">
+        <div class="text-item">
+          <p class="text">{{contact.name}}</p>
+          <p class="text">{{contact.tel}}</p>
+        </div>
+        <button  class="delete-button-disabled" >D</button>
+      </li>
+    </ul>
+    <button class="close-button" (click)="hidden = true" >CLOSE</button>
+  </div>
+</div>

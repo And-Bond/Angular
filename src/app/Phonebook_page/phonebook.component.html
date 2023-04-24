@@ -1,14 +1,8 @@
-<contact-form (onSubmit)="onSubmitted($event)"
-      ><h1>Phonebook</h1></contact-form
-    >
-    <input
-      class="filter-input"
-      type="text"
-      (input)="onInput()"
-      [(ngModel)]="filterValue"
-    />
-    <contact-list
-      (onContactDelete)="onContactDelete($event)"
-      [contacts]="filteredContacts"
-      ><h2>Contacts</h2></contact-list
->
+<div class="phonebookComp">
+  <button type="click" class="phbook-btn" (click)="addcontacts.hidden = false">Add new Contact</button>
+  <button type="click" class="phbook-btn" (click)="showcontacts.hidden = false">
+    Show all contacts
+  </button>
+  <show-contacts-comp #showcontacts></show-contacts-comp>
+  <add-contacts-comp #addcontacts></add-contacts-comp>
+</div>
