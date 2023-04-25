@@ -13,19 +13,23 @@ button{
     align-items: center;
 }
 
-.phonebook_btn,.main_btn{
+.nav-button{
     width: 100px;
     height: 50px;
     background-color: #fff;
     color: black;
     cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    display: flex;
 }
 
-.main_btn--active,.phonebook_btn--active{
+.nav-button--active{
     background-color: #000;
     color: #fff;
 }
-.main_btn:hover,.phonebook_btn:hover{
+.nav-button:hover{
     background-color: #000;
     color: #fff;
 }

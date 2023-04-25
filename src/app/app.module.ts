@@ -1,16 +1,25 @@
-import { NgModule }      from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule }   from '@angular/forms'
+import { Component } from "@angular/core";
+import { NgModule } from "@angular/core";
+import { BrowserModule } from "@angular/platform-browser";
+import { FormsModule } from "@angular/forms";
 
-import { AppComponent }   from './app.component';
-import {PhonebookModule} from './Phonebook_page/phonebook.module'
+import { Routes, RouterModule } from "@angular/router";
 
-import {NavComponent} from './Nav/nav.component'
+import { AppComponent } from "./app.component";
+import { PhonebookModule } from "./Phonebook_page/phonebook.module";
+import { Phonebook } from './Phonebook_page/phonebook.component'
+import { MainComponent } from "./Main_page/Mainpage.component";
+
+import { NavComponent } from "./Nav/nav.component";
+
+const appRoutes: Routes = [
+    {path: "main", component: MainComponent },
+    {path: 'phonebook', component: Phonebook}
+];
 
 @NgModule({
-    imports:      [ BrowserModule, FormsModule, PhonebookModule ],
-    declarations: [ AppComponent,NavComponent ],
-    bootstrap:    [ AppComponent ]
+  imports: [RouterModule.forRoot(appRoutes) ,BrowserModule, FormsModule, PhonebookModule],
+  declarations: [AppComponent, NavComponent, MainComponent],
+  bootstrap: [AppComponent],
 })
-
-export class AppModule { }
+export class AppModule {}
