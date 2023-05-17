@@ -6,16 +6,17 @@
       <p>Tel</p>
       <input #tel class="input" type="text" />
       <button
-        (click)="
-          onSubmit(name.value, tel.value); name.value = ''; tel.value = ''
-        "
+      #submitBtn
         type="submit"
         class="btn"
+        (click)=" 
+          onSubmit(name.value, tel.value); name.value = ''; tel.value = ''
+         "
       >
         ADD
       </button>
     </form>
     <button class="close-button" (click)="hidden = true">CLOSE</button>
-    <p class="error">{{errorMsg}}</p>
+    <p #error class="error">{{errorMsg}}</p>
   </div>
 </div>
