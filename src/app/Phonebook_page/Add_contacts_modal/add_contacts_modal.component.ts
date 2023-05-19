@@ -7,6 +7,8 @@ import {
   ElementRef,
   AfterViewInit,
 } from "@angular/core";
+import { Store } from "@ngrx/store";
+import { contactsWrite } from "src/ngrx/contacts.actions";
 import { Observable, fromEvent } from "rxjs";
 
 @Component({
@@ -18,31 +20,45 @@ export class AddContactsModal implements OnInit, DoCheck {
   hidden: boolean = true;
   contacts = [];
 
-  contacts$ : Observable<Array<any>>
+  contacts$: Observable<Array<any>>;
 
   errorMsg = "";
 
-//   @ViewChild("submitBtn")
-//   submitBthEl: ElementRef;
+  //   @ViewChild("submitBtn")
+  //   submitBthEl: ElementRef;
 
-//   submitEvent$: Observable<Event>;
+  //   submitEvent$: Observable<Event>;
 
-  ngOnInit(): void {
+  constructor(private store: Store<{ contacts: Array<any> }>) {
+
     const error: any = JSON.parse(localStorage.getItem("contacts"));
     if (error === null) {
-      this.contacts = [];
+      alert("Error Happened");
     } else {
-      this.contacts = error;
+      this.store.dispatch(contactsWrite());
     }
+
+    console.log(error);
+    
+    
+    this.contacts$ = store.select("contacts");
+    console.log(this.contacts$);
+    setTimeout(_ => {
+      console.log(this.contacts$);
+    },1000)
   }
 
-//   ngAfterViewInit() {
-//     this.submitEvent$ = fromEvent(this.submitBthEl?.nativeElement, "submit");
+  ngOnInit(): void {
+    // console.log(this.contacts$.subscribe((e) => console.log(e)));
+  }
 
-//     this.submitEvent$.subscribe((e) => {
-//       console.log("2");
-//     });
-//   }
+  //   ngAfterViewInit() {
+  //     this.submitEvent$ = fromEvent(this.submitBthEl?.nativeElement, "submit");
+
+  //     this.submitEvent$.subscribe((e) => {
+  //       console.log("2");
+  //     });
+  //   }
 
   ngDoCheck() {
     const error: any = JSON.parse(localStorage.getItem("contacts"));
@@ -54,15 +70,22 @@ export class AddContactsModal implements OnInit, DoCheck {
   }
 
   onSubmit(conName, conTel) {
-    const dup = this.contacts.find(({name}) => {
-        return conName === name
-    })
-    if(dup){
-        this.errorMsg = 'This contact is already exist!'
-        return;
+    const dup = this.contacts.find(({ name }) => {
+      return conName === name;
+    });
+    if (dup) {
+      this.errorMsg = "This contact is already exist!";
+      return;
     }
-    this.errorMsg = ''
-    this.contacts = [...this.contacts,{name:conName,tel:conTel,id:nanoid()}]
-    localStorage.setItem('contacts',JSON.stringify(this.contacts))
+    // if(this.contacts.indexOf({name: conName}) > -1){
+    //   this.errorMsg = "This contact is already exist!";
+    //   return; 
+    // }
+    this.errorMsg = "";
+    this.contacts = [
+      ...this.contacts,
+      { name: conName, tel: conTel, id: nanoid() },
+    ];
+    localStorage.setItem("contacts", JSON.stringify(this.contacts));
   }
 }

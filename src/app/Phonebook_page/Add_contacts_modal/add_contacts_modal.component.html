@@ -18,5 +18,6 @@
     </form>
     <button class="close-button" (click)="hidden = true">CLOSE</button>
     <p #error class="error">{{errorMsg}}</p>
+    <p>{{contacts$ | async}}</p>
   </div>
 </div>
